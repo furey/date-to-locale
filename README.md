@@ -1,4 +1,4 @@
-# 📆 Date → Locale Converter
+# Date → Locale Converter
 
 ## Contents
 
