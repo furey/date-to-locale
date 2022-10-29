@@ -42,14 +42,14 @@ $ vite build
 
 Optional browser query string parameters:
 
-| Parameter | Description  | Example                      |
-| :-------- | :----------- | :--------------------------- |
-| `i`       | Input Date   | `2022-10-26%2007:30:00.327Z` |
-| `l`       | Locale       | `en-GB`                      |
-| `ds`      | Date Style   | `short`                      |
-| `ts`      | Time Style   | `short`                      |
-| `tz`      | Time Zone    | `Australia/Sydney`           |
-| `o`       | Show Options | `true`                       |
+| Parameter | Description       | Example                                         |
+| :-------- | :---------------- | :---------------------------------------------- |
+| `i`       | Input Date        | `2022-10-26%2007:30:00.327Z`, `1667020560`, etc |
+| `l`       | Output Locale     | `en-GB`, etc                                    |
+| `ds`      | Output Date Style | `full`, `long`, `medium`, `short`               |
+| `ts`      | Output Time Style | `full`, `long`, `medium`, `short`               |
+| `tz`      | Output Time Zone  | `Australia/Sydney`, etc                         |
+| `o`       | Show Options      | `true`, `yes`, `1`                              |
 
 Example:
 
