@@ -1,18 +1,20 @@
 <script setup>
 
-import { ref, reactive, computed, onMounted, nextTick } from 'vue'
+import { ref, reactive, computed, onMounted, nextTick, watch } from 'vue'
 
 const $output = ref(null)
 
 const profile = Intl.DateTimeFormat().resolvedOptions()
 
+const params = new URLSearchParams(window.location.search)
+
 const state = reactive({
-  input: '',
-  locale: profile.locale,
-  dateStyle: 'short',
-  timeStyle: 'short',
-  timeZone: profile.timeZone,
-  showOptions: false
+  input: params.get('i') || '',
+  locale: params.get('l') || profile.locale,
+  dateStyle: params.get('ds') || 'short',
+  timeStyle: params.get('ts') || 'short',
+  timeZone: params.get('tz') || profile.timeZone,
+  showOptions: ['true', 'yes', '1'].includes(params.get('o')?.toLowerCase()) || false
 })
 
 const output = computed(() => {
@@ -40,15 +42,7 @@ const parseInt = value => {
   return Number.parseInt(value)
 }
 
-
 onMounted(() => {
-  const params = new URLSearchParams(window.location.search)
-  state.input = params.get('i') || state.input
-  state.locale = params.get('l') || state.locale
-  state.dateStyle = params.get('ds') || state.dateStyle
-  state.timeStyle = params.get('ts') || state.timeStyle
-  state.timeZone = params.get('tz') || state.timeZone
-  state.showOptions = ['true', 'yes', '1'].includes(params.get('o')?.toLowerCase()) || state.showOptions
   if (state.input) nextTick(selectOutput)
 })
 
@@ -62,6 +56,17 @@ const selectNode = (node) => {
   selection.removeAllRanges()
   selection.addRange(range)
 }
+
+watch(() => {
+  const url = new URL(window.location)
+  url.searchParams.set('i', state.input)
+  url.searchParams.set('l', state.locale)
+  url.searchParams.set('ds', state.dateStyle)
+  url.searchParams.set('ts', state.timeStyle)
+  url.searchParams.set('tz', state.timeZone)
+  url.searchParams.set('o', state.showOptions)
+  window.history.pushState(null, '', url.toString())
+})
 
 </script>
 
