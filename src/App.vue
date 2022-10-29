@@ -21,9 +21,8 @@ const output = computed(() => {
   const { input, locale, dateStyle, timeStyle, timeZone } = state
   const options = { dateStyle, timeStyle, timeZone }
   if (!input) return 'Output Locale'
-  let value = input.toLowerCase() === 'now'
-    ? Date.now()
-    : input
+  let value = input
+  if (value.toLowerCase() === 'now') value = Date.now()
   if (isParsableInt(value)) value = parseInt(value)
   try {
     const string = new Date(value).toLocaleString(locale, options)
