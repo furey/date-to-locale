@@ -10,7 +10,9 @@
 
 ## Overview
 
-Simple web app to convert an input date to a locale string.
+A simple web app to convert an input date to a locale string.
+
+Built with [Vite](https://vitejs.dev), [Vue Composition API](https://vuejs.org) and [Tailwind CSS](https://tailwindcss.com/).
 
 ## Demo
 
@@ -40,17 +42,18 @@ $ vite build
 
 Optional browser query string parameters:
 
-| Parameter | Description | Example                      |
-| :-------- | :---------- | :--------------------------- |
-| `i`       | Input Date  | `2022-10-26%2007:30:00.327Z` |
-| `l`       | Locale      | `en-GB`                      |
-| `ds`      | Date Style  | `short`                      |
-| `ts`      | Time Style  | `short`                      |
-| `tz`      | Time Zone   | `Australia/Sydney`           |
+| Parameter | Description  | Example                      |
+| :-------- | :----------- | :--------------------------- |
+| `i`       | Input Date   | `2022-10-26%2007:30:00.327Z` |
+| `l`       | Locale       | `en-GB`                      |
+| `ds`      | Date Style   | `short`                      |
+| `ts`      | Time Style   | `short`                      |
+| `tz`      | Time Zone    | `Australia/Sydney`           |
+| `o`       | Show Options | `true`                       |
 
 Example:
 
-https://furey.com.au/stuff/utils/date/?i=2022-10-26%2007:30:00.327Z&l=en-US&ds=full&ts=full&tz=America/New_York
+https://furey.com.au/stuff/utils/date/?i=2022-10-26%2007:30:00.327Z&l=en-US&ds=full&ts=full&tz=America/New_York&o=true
 
 ## License
 
